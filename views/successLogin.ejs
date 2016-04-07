@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Successful Login</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Current User Information</h1>
+    <div>
+	       <% for(var i in data) 
+	            {                     
+            %>
+           		    <p><strong>Username: </strong><%= data[i].username %></p>
+                	<p><strong>First Name: </strong><%=data[i].fname %></p>
+                	<p><strong>Last Name: </strong><%=data[i].lname %></p>
+                	<p><strong>Date of Birth: </strong><%=data[i].birthday %></p>
+                	<p><strong>Gender: </strong><%=data[i].gender %></p>
+            		<br>       
+           <% 
+	            }  
+	       %>
+	</div>
+  </body>
+</html>
