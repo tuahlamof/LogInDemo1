@@ -4,6 +4,7 @@ var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var home = require('./routes/home');
+var watson = require('watson-developer-cloud');
 
 var app = express();
 
@@ -33,6 +34,25 @@ app.post('/afterSignIn', home.afterSignIn);
 app.get('/getAllUsers', home.getAllUsers);
 app.get('/signup', home.signup);
 app.post('/afterSignUp', home.afterSignUp);
+app.post('/', function (req, res) {
+	var language_translation = watson.language_translation({
+  	username: 'bcd9bebb-d032-4e8d-bec1-1f62c166128e',
+  	password: 'QdxXpPhUZylY',
+ 	  version: 'v2'
+	});
+
+
+	language_translation.translate({
+    	text: 'Team 8 members: Huiyu Yang, Jing Lu, Sheng Zhou, Xiaoyu Liang',
+    	source: 'en',
+   	 target: 'es'
+  	}, function(err, translation) {
+    	if (err)
+      	console.log(err)
+   	 	else
+     	 console.log(translation);
+	});
+});
 
 
 http.createServer(app).listen(app.get('port'), function(){

@@ -8,5 +8,6 @@
   "dependencies": {
     "express": "3.2.6",
     "ejs": "*"
+    "watson-developer-cloud": "1.3.3"
   }
 }
